@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		88BDD53D2C8D7ACD00EEB1FA /* Project1_Day16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project1_Day16.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88BDD53D2C8D7ACD00EEB1FA /* Project01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BDD5402C8D7ACD00EEB1FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88BDD5422C8D7ACD00EEB1FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		88BDD5442C8D7ACD00EEB1FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		88BDD5342C8D7ACD00EEB1FA = {
 			isa = PBXGroup;
 			children = (
-				88BDD53F2C8D7ACD00EEB1FA /* Project1_Day16 */,
+				88BDD53F2C8D7ACD00EEB1FA /* Project01 */,
 				88BDD53E2C8D7ACD00EEB1FA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,12 +68,12 @@
 		88BDD53E2C8D7ACD00EEB1FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88BDD53D2C8D7ACD00EEB1FA /* Project1_Day16.app */,
+				88BDD53D2C8D7ACD00EEB1FA /* Project01.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		88BDD53F2C8D7ACD00EEB1FA /* Project1_Day16 */ = {
+		88BDD53F2C8D7ACD00EEB1FA /* Project01 */ = {
 			isa = PBXGroup;
 			children = (
 				88BDD5402C8D7ACD00EEB1FA /* AppDelegate.swift */,
@@ -85,7 +85,7 @@
 				88BDD54E2C8D7ACE00EEB1FA /* Info.plist */,
 				88BDD5542C8D7BE600EEB1FA /* Content */,
 			);
-			path = Project1_Day16;
+			path = Project01;
 			sourceTree = "<group>";
 		};
 		88BDD5542C8D7BE600EEB1FA /* Content */ = {
@@ -108,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		88BDD53C2C8D7ACD00EEB1FA /* Project1_Day16 */ = {
+		88BDD53C2C8D7ACD00EEB1FA /* Project01 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88BDD5512C8D7ACE00EEB1FA /* Build configuration list for PBXNativeTarget "Project1_Day16" */;
+			buildConfigurationList = 88BDD5512C8D7ACE00EEB1FA /* Build configuration list for PBXNativeTarget "Project01" */;
 			buildPhases = (
 				88BDD5392C8D7ACD00EEB1FA /* Sources */,
 				88BDD53A2C8D7ACD00EEB1FA /* Frameworks */,
@@ -120,9 +120,9 @@
 			);
 			dependencies = (
 			);
-			name = Project1_Day16;
+			name = Project01;
 			productName = Project1_Day16;
-			productReference = 88BDD53D2C8D7ACD00EEB1FA /* Project1_Day16.app */;
+			productReference = 88BDD53D2C8D7ACD00EEB1FA /* Project01.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -140,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 88BDD5382C8D7ACD00EEB1FA /* Build configuration list for PBXProject "Project1_Day16" */;
+			buildConfigurationList = 88BDD5382C8D7ACD00EEB1FA /* Build configuration list for PBXProject "Project01" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -153,7 +153,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				88BDD53C2C8D7ACD00EEB1FA /* Project1_Day16 */,
+				88BDD53C2C8D7ACD00EEB1FA /* Project01 */,
 			);
 		};
 /* End PBXProject section */
@@ -392,7 +392,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		88BDD5382C8D7ACD00EEB1FA /* Build configuration list for PBXProject "Project1_Day16" */ = {
+		88BDD5382C8D7ACD00EEB1FA /* Build configuration list for PBXProject "Project01" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88BDD54F2C8D7ACE00EEB1FA /* Debug */,
@@ -401,7 +401,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88BDD5512C8D7ACE00EEB1FA /* Build configuration list for PBXNativeTarget "Project1_Day16" */ = {
+		88BDD5512C8D7ACE00EEB1FA /* Build configuration list for PBXNativeTarget "Project01" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88BDD5522C8D7ACE00EEB1FA /* Debug */,
