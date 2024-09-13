@@ -18,6 +18,8 @@ class ViewController: UITableViewController {
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(recommendApp))
+        
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
@@ -30,6 +32,16 @@ class ViewController: UITableViewController {
         }
         pictures.sort()
         print(pictures)
+    }
+    
+    @objc func recommendApp() {
+        let recommendationText = "Check out the Storm Viewer app! It's great for viewing storm images."
+        let activityVC = UIActivityViewController(activityItems: [recommendationText], applicationActivities: [])
+
+        // For iPad support
+        activityVC.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+
+        present(activityVC, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
