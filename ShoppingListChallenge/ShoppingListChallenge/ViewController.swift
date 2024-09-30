@@ -29,7 +29,7 @@ class ViewController: UITableViewController {
             guard let item = ac?.textFields?[0].text else { return }
             self?.submit(item)
         }
-
+ 
         ac.addAction(submitAction)
         present(ac, animated: true)
     }
@@ -56,7 +56,7 @@ class ViewController: UITableViewController {
     }
 
     @objc func shareList() {
-        let list = shoppingList.joined(separator: "\\n")
+        let list = shoppingList.joined(separator: "\n")
         let vc = UIActivityViewController(activityItems: [list], applicationActivities: [])
         present(vc, animated: true)
     }
