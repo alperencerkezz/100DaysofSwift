@@ -16,17 +16,13 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Adding Credits button to the top right corner
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
         
-        // Adding Filter button to the top left corner
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(promptForFilter))
         
-        // Load the petitions
         loadPetitions()
     }
-    
-    // MARK: - Load petitions function
+
     func loadPetitions() {
         let urlString: String
         
@@ -45,8 +41,7 @@ class ViewController: UITableViewController {
         
         showError()
     }
-    
-    // MARK: - Filter petitions function
+        
     @objc func promptForFilter() {
         let ac = UIAlertController(title: "Filter", message: "Enter a keyword to filter petitions:", preferredStyle: .alert)
         ac.addTextField()
@@ -67,21 +62,18 @@ class ViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    // MARK: - Show credits function
     @objc func showCredits() {
         let alert = UIAlertController(title: "Credits", message: "Data is sourced from hackingwithswift.com", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
     
-    // MARK: - Show error function
     func showError() {
         let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
     
-    // MARK: - Parse JSON data
     func parse(json: Data) {
         let decoder = JSONDecoder()
         
@@ -92,7 +84,6 @@ class ViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredPetitions.count
     }
