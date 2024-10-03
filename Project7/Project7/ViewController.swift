@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 class ViewController: UITableViewController {
     var petitions = [Petition]()
     var filteredPetitions = [Petition]()
