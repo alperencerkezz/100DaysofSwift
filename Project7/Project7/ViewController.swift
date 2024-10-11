@@ -15,13 +15,13 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(promptForFilter))
         
-        loadPetitions()
+        // Perform JSON fetching in the background using performSelector
+        performSelector(inBackground: #selector(fetchJSON), with: nil)
     }
-
-    func loadPetitions() {
+    
+    @objc func fetchJSON() {
         let urlString: String
         
         if navigationController?.tabBarItem.tag == 0 {
@@ -30,19 +30,23 @@ class ViewController: UITableViewController {
             urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
         }
         
-        DispatchQueue.global(qos: .userInitiated).async {
-            [weak self] in
-            if let url = URL(string: urlString) {
-                if let data = try? Data(contentsOf: url) {
-                    self?.parse(json: data)
-                    return
-                }
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url) {
+                parse(json: data)
+                return
             }
         }
         
-        showError()
+        // Call showError on the main thread if data fetching fails
+        performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
     }
-        
+    
+    @objc func showError() {
+        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
     @objc func promptForFilter() {
         let ac = UIAlertController(title: "Filter", message: "Enter a keyword to filter petitions:", preferredStyle: .alert)
         ac.addTextField()
@@ -58,7 +62,7 @@ class ViewController: UITableViewController {
     
     func filterPetitions(_ filter: String) {
         filteredPetitions = petitions.filter { petition in
-            return petition.title.contains(filter) || petition.body.contains(filter)
+            return petition.title.localizedCaseInsensitiveContains(filter) || petition.body.localizedCaseInsensitiveContains(filter)
         }
         tableView.reloadData()
     }
@@ -69,19 +73,16 @@ class ViewController: UITableViewController {
         present(alert, animated: true)
     }
     
-    func showError() {
-        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
-    }
-    
     func parse(json: Data) {
         let decoder = JSONDecoder()
         
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
             filteredPetitions = petitions
-            tableView.reloadData()
+            performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        } else {
+            // Handle error by calling showError if JSON parsing fails
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
     }
     
@@ -101,6 +102,5 @@ class ViewController: UITableViewController {
         let vc = DetailViewController()
         vc.detailItem = filteredPetitions[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
-
     }
 }
