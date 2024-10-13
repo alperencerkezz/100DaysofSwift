@@ -17,11 +17,10 @@ class ViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(promptForFilter))
         
-        // Perform JSON fetching in the background using performSelector
-        performSelector(inBackground: #selector(fetchJSON), with: nil)
+        fetchJSON()
     }
     
-    @objc func fetchJSON() {
+    func fetchJSON() {
         let urlString: String
         
         if navigationController?.tabBarItem.tag == 0 {
@@ -30,15 +29,18 @@ class ViewController: UITableViewController {
             urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
         }
         
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                parse(json: data)
-                return
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let url = URL(string: urlString) {
+                if let data = try? Data(contentsOf: url) {
+                    self?.parse(json: data)
+                    return
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self?.showError()
             }
         }
-        
-        // Call showError on the main thread if data fetching fails
-        performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
     }
     
     @objc func showError() {
@@ -61,10 +63,15 @@ class ViewController: UITableViewController {
     }
     
     func filterPetitions(_ filter: String) {
-        filteredPetitions = petitions.filter { petition in
-            return petition.title.localizedCaseInsensitiveContains(filter) || petition.body.localizedCaseInsensitiveContains(filter)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.filteredPetitions = self?.petitions.filter { petition in
+                return petition.title.localizedCaseInsensitiveContains(filter) || petition.body.localizedCaseInsensitiveContains(filter)
+            } ?? []
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
-        tableView.reloadData()
     }
     
     @objc func showCredits() {
@@ -79,10 +86,14 @@ class ViewController: UITableViewController {
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
             filteredPetitions = petitions
-            performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } else {
-            // Handle error by calling showError if JSON parsing fails
-            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
+            DispatchQueue.main.async {
+                self.showError()
+            }
         }
     }
     
