@@ -13,6 +13,7 @@
 		884EEB022CC4004900EE02BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884EEB002CC4004900EE02BA /* Main.storyboard */; };
 		884EEB042CC4004C00EE02BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884EEB032CC4004C00EE02BA /* Assets.xcassets */; };
 		884EEB072CC4004C00EE02BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884EEB052CC4004C00EE02BA /* LaunchScreen.storyboard */; };
+		884EEB0F2CC4047200EE02BA /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884EEB0E2CC4047200EE02BA /* PersonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		884EEB032CC4004C00EE02BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		884EEB062CC4004C00EE02BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		884EEB082CC4004C00EE02BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		884EEB0E2CC4047200EE02BA /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				884EEAFC2CC4004900EE02BA /* SceneDelegate.swift */,
 				884EEAFE2CC4004900EE02BA /* ViewController.swift */,
 				884EEB002CC4004900EE02BA /* Main.storyboard */,
+				884EEB0E2CC4047200EE02BA /* PersonCell.swift */,
 				884EEB032CC4004C00EE02BA /* Assets.xcassets */,
 				884EEB052CC4004C00EE02BA /* LaunchScreen.storyboard */,
 				884EEB082CC4004C00EE02BA /* Info.plist */,
@@ -140,6 +143,7 @@
 			files = (
 				884EEAFF2CC4004900EE02BA /* ViewController.swift in Sources */,
 				884EEAFB2CC4004900EE02BA /* AppDelegate.swift in Sources */,
+				884EEB0F2CC4047200EE02BA /* PersonCell.swift in Sources */,
 				884EEAFD2CC4004900EE02BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
