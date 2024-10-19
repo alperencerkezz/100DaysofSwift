@@ -14,6 +14,7 @@
 		884EEB042CC4004C00EE02BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884EEB032CC4004C00EE02BA /* Assets.xcassets */; };
 		884EEB072CC4004C00EE02BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884EEB052CC4004C00EE02BA /* LaunchScreen.storyboard */; };
 		884EEB0F2CC4047200EE02BA /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884EEB0E2CC4047200EE02BA /* PersonCell.swift */; };
+		884EEB112CC4548B00EE02BA /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884EEB102CC4548B00EE02BA /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		884EEB062CC4004C00EE02BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		884EEB082CC4004C00EE02BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		884EEB0E2CC4047200EE02BA /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		884EEB102CC4548B00EE02BA /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				884EEB0E2CC4047200EE02BA /* PersonCell.swift */,
 				884EEB032CC4004C00EE02BA /* Assets.xcassets */,
 				884EEB052CC4004C00EE02BA /* LaunchScreen.storyboard */,
+				884EEB102CC4548B00EE02BA /* Person.swift */,
 				884EEB082CC4004C00EE02BA /* Info.plist */,
 			);
 			path = Project10;
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				884EEB112CC4548B00EE02BA /* Person.swift in Sources */,
 				884EEAFF2CC4004900EE02BA /* ViewController.swift in Sources */,
 				884EEAFB2CC4004900EE02BA /* AppDelegate.swift in Sources */,
 				884EEB0F2CC4047200EE02BA /* PersonCell.swift in Sources */,
