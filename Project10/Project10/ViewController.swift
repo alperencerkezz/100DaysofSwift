@@ -45,17 +45,14 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     @objc func addNewPerson() {
         let ac = UIAlertController(title: "Add New Person", message: nil, preferredStyle: .actionSheet)
         
-        // Option to use Camera
         ac.addAction(UIAlertAction(title: "Take Photo", style: .default) { [weak self] _ in
             self?.presentImagePicker(sourceType: .camera)
         })
         
-        // Option to use Photo Library
         ac.addAction(UIAlertAction(title: "Choose from Library", style: .default) { [weak self] _ in
             self?.presentImagePicker(sourceType: .photoLibrary)
         })
         
-        // Cancel option
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(ac, animated: true)
@@ -63,7 +60,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 
     func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
-            // If the selected source is not available, return
             return
         }
         
