@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController {
+class ViewController: UITableViewController {
     var pictures = [String]()
     var selectedPictureNumber = 0
     var totalPictures = 0
@@ -18,11 +18,8 @@ class CollectionViewController: UICollectionViewController {
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        // Register the cell class or nib if needed
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "PictureCell")
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(recommendApp))
-
+        
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             let fm = FileManager.default
             let path = Bundle.main.resourcePath!
@@ -35,50 +32,50 @@ class CollectionViewController: UICollectionViewController {
             }
             
             self?.pictures.sort()
+            print(self?.pictures ?? [])
 
             DispatchQueue.main.async {
-                self?.collectionView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
-
+    
     @objc func recommendApp() {
         let recommendationText = "Check out the Storm Viewer app! It's great for viewing storm images."
         let activityVC = UIActivityViewController(activityItems: [recommendationText], applicationActivities: [])
+
         activityVC.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
 
         present(activityVC, animated: true)
     }
 
-    // MARK: - UICollectionView DataSource
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pictures.count
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PictureCell", for: indexPath)
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
+        let imageName = pictures[indexPath.row]
         
-        let imageName = pictures[indexPath.item]
-        let imageView = UIImageView(image: UIImage(named: imageName))
+        cell.textLabel?.text = imageName
         
-        imageView.contentMode = .scaleAspectFit
-        imageView.frame = cell.contentView.frame
+        let image = UIImage(named: imageName)
         
-        cell.contentView.addSubview(imageView)
+        cell.imageView?.image = image
+        cell.imageView?.contentMode = .scaleAspectFit
+        
+        cell.imageView?.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         
         return cell
     }
 
-    // MARK: - UICollectionViewDelegate
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedImage = pictures[indexPath.item]
-            vc.selectedPictureNumber = indexPath.item + 1
+            vc.selectedImage = pictures[indexPath.row]
+            vc.selectedPictureNumber = indexPath.row + 1
             vc.totalPictures = pictures.count
             navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
-
