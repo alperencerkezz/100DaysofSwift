@@ -88,9 +88,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 box.physicsBody?.isDynamic = false
                 addChild(box)
             } else {
-                // Limit the Y value of the ball and pick a random color
-                if numberOfBalls < 5 { // Ball limit check
-                    let forcedYPosition = CGFloat(700) // Near the top of the screen
+                if numberOfBalls < 5 {
+                    let forcedYPosition = CGFloat(700)
                     let randomBallColor = ballColors.randomElement() ?? "ballRed"
                     let ball = SKSpriteNode(imageNamed: randomBallColor)
                     ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
@@ -100,7 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ball.name = "ball"
                     addChild(ball)
                     
-                    numberOfBalls += 1 // Track the number of balls
+                    numberOfBalls += 1
                 }
             }
         }
@@ -147,9 +146,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if object.name == "good" {
             destroy(ball: ball)
             score += 1
+            numberOfBalls -= 1
         } else if object.name == "bad" {
             destroy(ball: ball)
             score -= 1
+            numberOfBalls -= 1
+        } else if object.physicsBody?.isDynamic == false {
+            object.removeFromParent() 
         }
     }
     
