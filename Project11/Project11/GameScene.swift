@@ -147,12 +147,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             destroy(ball: ball)
             score += 1
             numberOfBalls -= 1
+            numberOfBalls += 1
         } else if object.name == "bad" {
             destroy(ball: ball)
             score -= 1
             numberOfBalls -= 1
         } else if object.physicsBody?.isDynamic == false {
-            object.removeFromParent() 
+            object.removeFromParent()
         }
     }
     
