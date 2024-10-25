@@ -11,15 +11,21 @@ class ViewController: UITableViewController {
     var pictures = [String]()
     var selectedPictureNumber = 0
     var totalPictures = 0
+    var viewCounts = [String: Int]() // Dictionary to store the view counts for each image
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(recommendApp))
         
+        // Load view counts from UserDefaults
+        if let savedCounts = UserDefaults.standard.dictionary(forKey: "viewCounts") as? [String: Int] {
+            viewCounts = savedCounts
+        }
+        
+        // Load images asynchronously
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             let fm = FileManager.default
             let path = Bundle.main.resourcePath!
@@ -32,8 +38,7 @@ class ViewController: UITableViewController {
             }
             
             self?.pictures.sort()
-            print(self?.pictures ?? [])
-
+            
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
@@ -43,9 +48,7 @@ class ViewController: UITableViewController {
     @objc func recommendApp() {
         let recommendationText = "Check out the Storm Viewer app! It's great for viewing storm images."
         let activityVC = UIActivityViewController(activityItems: [recommendationText], applicationActivities: [])
-
         activityVC.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-
         present(activityVC, animated: true)
     }
 
@@ -59,20 +62,34 @@ class ViewController: UITableViewController {
         
         cell.textLabel?.text = imageName
         
-        let image = UIImage(named: imageName)
+        // Display the view count as a subtitle
+        let viewCount = viewCounts[imageName] ?? 0
+        cell.detailTextLabel?.text = "Viewed \(viewCount) times"
         
+        // Set image with fixed size
+        let image = UIImage(named: imageName)
         cell.imageView?.image = image
         cell.imageView?.contentMode = .scaleAspectFit
-        
         cell.imageView?.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         
         return cell
     }
 
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedImage = pictures[indexPath.row]
+        
+        // Increment the view count
+        viewCounts[selectedImage, default: 0] += 1
+        
+        // Save updated counts to UserDefaults
+        UserDefaults.standard.set(viewCounts, forKey: "viewCounts")
+        
+        // Reload the selected cell to show updated count
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        // Push to detail view controller
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedImage = pictures[indexPath.row]
+            vc.selectedImage = selectedImage
             vc.selectedPictureNumber = indexPath.row + 1
             vc.totalPictures = pictures.count
             navigationController?.pushViewController(vc, animated: true)
