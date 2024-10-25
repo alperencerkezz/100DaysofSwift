@@ -10,7 +10,8 @@ class ViewController: UIViewController {
     var score = 0
     var correctAnswer = 0
     var count = 0
-    
+    var highScore = UserDefaults.standard.integer(forKey: "highScore")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
@@ -60,6 +61,7 @@ class ViewController: UIViewController {
                 present(ac, animated: true)
             }
         } else {
+            // Game Over logic
             if sender.tag != correctAnswer {
                 score -= 1
                 let fac = UIAlertController(title: "Game Over", message: "Wrong! Your score is \(score), That's the flag of \(countries[sender.tag].uppercased())", preferredStyle: .alert)
@@ -71,11 +73,20 @@ class ViewController: UIViewController {
                 fac.addAction(UIAlertAction(title: "Start New Game!", style: .default, handler: startNewGame))
                 present(fac, animated: true)
             }
+            
+            if score > highScore {
+                highScore = score
+                UserDefaults.standard.set(highScore, forKey: "highScore")
+                
+                let congratsAlert = UIAlertController(title: "Congratulations!", message: "You've set a new high score of \(highScore)!", preferredStyle: .alert)
+                congratsAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(congratsAlert, animated: true)
+            }
         }
     }
     
     @objc func showScore() {
-        let alert = UIAlertController(title: "Your Score", message: "Your current score is \(score).", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Your Score", message: "Your current score is \(score). Your high score is \(highScore).", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
