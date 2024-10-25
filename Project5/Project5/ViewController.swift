@@ -9,14 +9,37 @@ import UIKit
 
 class ViewController: UITableViewController {
     var allWords = [String]()
-    var usedWords = [String]()
+    var usedWords = [String]() {
+        didSet {
+            
+            UserDefaults.standard.set(usedWords, forKey: "usedWords")
+        }
+    }
     
+    var currentWord: String? {
+        didSet {
+          
+            UserDefaults.standard.set(currentWord, forKey: "currentWord")
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "New Word", style: .plain , target: self, action: #selector(startGame))
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "New Word", style: .plain, target: self, action: #selector(startGame))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+        
+        loadGame()
+        startGame()
+    }
+    
+    func loadGame() {
+        
+        if let savedWords = UserDefaults.standard.array(forKey: "usedWords") as? [String] {
+            usedWords = savedWords
+        }
+        currentWord = UserDefaults.standard.string(forKey: "currentWord")
+        
         
         if let startsWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startsWordsURL) {
@@ -25,8 +48,6 @@ class ViewController: UITableViewController {
         } else {
             allWords = ["silkworm"]
         }
-        
-        startGame()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,10 +61,12 @@ class ViewController: UITableViewController {
     }
     
     @objc func startGame() {
-        title = allWords.randomElement()
+        currentWord = allWords.randomElement()
+        title = currentWord
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
     }
+
     
     @objc func promptForAnswer() {
         let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
@@ -55,12 +78,11 @@ class ViewController: UITableViewController {
         }
         
         ac.addAction(submitAction)
-        
         present(ac, animated: true)
     }
     
     func isPossible(word: String) -> Bool {
-        var tempWord = title!.lowercased()
+        var tempWord = currentWord!.lowercased()
         
         for letter in word {
             if let pos = tempWord.range(of: String(letter)) {
@@ -90,14 +112,14 @@ class ViewController: UITableViewController {
     }
     
     func isNotStartWord(word: String) -> Bool {
-        return word.lowercased() != title?.lowercased()
+        return word.lowercased() != currentWord?.lowercased()
     }
+    
     func showErrorMessage(errorTitle: String, errorMessage: String) {
         let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
-    
     
     func submit(answer: String) {
         let lowerAnswer = answer.lowercased()
@@ -127,7 +149,7 @@ class ViewController: UITableViewController {
                     }
                 } else {
                     errorTitle = "Word not possible"
-                    errorMessage = "You can't spell that word from '\(title!.lowercased())'!"
+                    errorMessage = "You can't spell that word from '\(currentWord!.lowercased())'!"
                 }
             } else {
                 errorTitle = "Word too short"
@@ -138,7 +160,6 @@ class ViewController: UITableViewController {
             errorMessage = "You can't use the start word as your answer!"
         }
         
-        // Call the showErrorMessage method with the errorTitle and errorMessage
         showErrorMessage(errorTitle: errorTitle, errorMessage: errorMessage)
     }
 }
