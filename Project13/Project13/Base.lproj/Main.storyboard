@@ -68,18 +68,29 @@
                                     <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lSh-fq-s7d"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cm2-EE-737">
+                                <rect key="frame" x="94" y="657" width="285" height="30"/>
+                                <connections>
+                                    <action selector="radiusChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="RuI-Q4-Cwg"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rM8-Uj-Hdl" firstAttribute="leading" secondItem="fcd-7b-GoG" secondAttribute="trailing" constant="10" id="0E9-hY-v2r"/>
+                            <constraint firstItem="cm2-EE-737" firstAttribute="top" secondItem="rM8-Uj-Hdl" secondAttribute="bottom" constant="60" id="3ws-59-RS5"/>
                             <constraint firstItem="75X-5i-epM" firstAttribute="top" secondItem="rM8-Uj-Hdl" secondAttribute="bottom" constant="8" id="AaR-W5-i36"/>
                             <constraint firstItem="75X-5i-epM" firstAttribute="top" secondItem="fcd-7b-GoG" secondAttribute="bottom" constant="11" id="GSU-bP-lUo"/>
+                            <constraint firstItem="cm2-EE-737" firstAttribute="leading" secondItem="rM8-Uj-Hdl" secondAttribute="leading" id="Ghc-P7-awy"/>
                             <constraint firstAttribute="bottom" secondItem="rM8-Uj-Hdl" secondAttribute="bottom" constant="255" id="JXs-KC-HVE"/>
                             <constraint firstItem="75X-5i-epM" firstAttribute="baseline" secondItem="vAd-Io-qcX" secondAttribute="baseline" id="Kjd-v1-zl8"/>
                             <constraint firstItem="lS2-DF-Gns" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="PSd-BW-HsP"/>
+                            <constraint firstItem="cm2-EE-737" firstAttribute="trailing" secondItem="rM8-Uj-Hdl" secondAttribute="trailing" id="Qah-vW-z1J"/>
                             <constraint firstItem="rM8-Uj-Hdl" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="V0b-PI-tZy"/>
+                            <constraint firstItem="cm2-EE-737" firstAttribute="height" secondItem="rM8-Uj-Hdl" secondAttribute="height" id="W34-CW-cBn"/>
                             <constraint firstItem="rM8-Uj-Hdl" firstAttribute="trailing" secondItem="vAd-Io-qcX" secondAttribute="trailing" id="YtG-iW-zaw"/>
+                            <constraint firstItem="cm2-EE-737" firstAttribute="width" secondItem="rM8-Uj-Hdl" secondAttribute="width" id="aeC-0K-ldh"/>
                             <constraint firstItem="fcd-7b-GoG" firstAttribute="leading" secondItem="75X-5i-epM" secondAttribute="leading" id="bgr-ij-UAR"/>
                             <constraint firstItem="lS2-DF-Gns" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-39" id="cWo-qa-11p"/>
                             <constraint firstItem="rM8-Uj-Hdl" firstAttribute="top" secondItem="lS2-DF-Gns" secondAttribute="bottom" constant="34" id="fyD-zT-Yfx"/>
@@ -92,6 +103,7 @@
                     <connections>
                         <outlet property="imageView" destination="Xw0-jV-C3S" id="arq-y2-dYf"/>
                         <outlet property="intensity" destination="rM8-Uj-Hdl" id="oNQ-nb-ByC"/>
+                        <outlet property="radiusSlider" destination="cm2-EE-737" id="ec3-5e-lhD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

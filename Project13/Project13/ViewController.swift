@@ -11,6 +11,7 @@ import CoreImage
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensity: UISlider!
+    @IBOutlet weak var radiusSlider: UISlider!
     
     var currentImage: UIImage!
     var context: CIContext!
@@ -24,6 +25,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         context = CIContext()
         currentFilter = CIFilter(name: "CISepiaTone")
+        configureSliders()
+        
     }
     
     @objc func importPicture() {
@@ -67,19 +70,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let actionTitle = action.title else { return }
         
         currentFilter = CIFilter(name: actionTitle)
+        title = actionTitle
         
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
+        configureSliders()
         applyProcessing()
     }
     
     @IBAction func save(_ sender: Any) {
-        guard let image = imageView.image else { return }
+        guard let image = imageView.image else {
+            let ac = UIAlertController(title: "Save error", message: "There is no image to save.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            return
+        }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image( _: didFinishSavingWithError: contextInfo:)), nil)
     }
     
     @IBAction func intensityChanged(_ sender: Any) {
+        applyProcessing()
+    }
+    @IBAction func radiusChanged(_ sender: Any) {
         applyProcessing()
     }
     
@@ -110,6 +123,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imageView.image = processedImage
             
         }
+    }
+    
+    
+    func configureSliders() {
+        radiusSlider.isHidden = !currentFilter.inputKeys.contains(kCIInputRadiusKey)
+        intensity.isHidden = !currentFilter.inputKeys.contains(kCIInputIntensityKey)
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
