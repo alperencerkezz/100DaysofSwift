@@ -16,6 +16,7 @@
 		880FC5942CF346BE0050863F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880FC5922CF346BE0050863F /* LaunchScreen.storyboard */; };
 		880FC59C2CF350850050863F /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = 880FC59A2CF350850050863F /* whackBad.caf */; };
 		880FC59D2CF350850050863F /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = 880FC59B2CF350850050863F /* whack.caf */; };
+		880FC59F2CF35C360050863F /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC59E2CF35C360050863F /* WhackSlot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		880FC5932CF346BE0050863F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		880FC59A2CF350850050863F /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
 		880FC59B2CF350850050863F /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
+		880FC59E2CF35C360050863F /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				880FC5852CF346BD0050863F /* GameScene.sks */,
 				880FC5892CF346BD0050863F /* GameScene.swift */,
 				880FC58B2CF346BD0050863F /* GameViewController.swift */,
+				880FC59E2CF35C360050863F /* WhackSlot.swift */,
 				880FC58D2CF346BD0050863F /* Main.storyboard */,
 				880FC5902CF346BE0050863F /* Assets.xcassets */,
 				880FC5922CF346BE0050863F /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 			files = (
 				880FC58A2CF346BD0050863F /* GameScene.swift in Sources */,
 				880FC58C2CF346BD0050863F /* GameViewController.swift in Sources */,
+				880FC59F2CF35C360050863F /* WhackSlot.swift in Sources */,
 				880FC5842CF346BD0050863F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
