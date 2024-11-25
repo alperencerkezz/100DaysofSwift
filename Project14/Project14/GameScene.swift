@@ -156,7 +156,7 @@ class GameScene: SKScene {
         
         numRounds += 1
         
-        if numRounds >= 30 {
+        if numRounds >= 3 {
             for slot in slots {
                 slot.hide()
             }
@@ -164,6 +164,16 @@ class GameScene: SKScene {
             gameOver.position = CGPoint(x: 512, y: 384)
             gameOver.zPosition = 1
             addChild(gameOver)
+            run(SKAction.playSoundFileNamed("gameOverSound.m4a", waitForCompletion: false))
+            
+            let finalScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+            finalScoreLabel.text = "Final score: \(score)"
+            finalScoreLabel.position = CGPoint(x: 512, y: 300)
+            finalScoreLabel.fontSize = 48
+            finalScoreLabel.zPosition = 1
+            finalScoreLabel.fontColor = .white
+            addChild(finalScoreLabel)
+            
             return
             
         }
