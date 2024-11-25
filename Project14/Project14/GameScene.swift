@@ -128,7 +128,20 @@ class GameScene: SKScene {
                 //they should have whacked this penguin
                 
                 whackSlot.charNode.xScale = 0.85
-                whackSlot.charNode.xScale = 0.85
+                whackSlot.charNode.yScale = 0.85
+                
+                if let smoke = SKEmitterNode(fileNamed: "Smoke") {
+                    smoke.position = whackSlot.position
+                    addChild(smoke)
+                    
+                    smoke.run(SKAction.sequence([
+                        SKAction.wait(forDuration: 1),
+                        SKAction.removeFromParent()
+                    
+                    ]))
+                    
+                    
+                }
                 
                 whackSlot.hit()
                 score += 1
@@ -156,7 +169,7 @@ class GameScene: SKScene {
         
         numRounds += 1
         
-        if numRounds >= 3 {
+        if numRounds >= 10 {
             for slot in slots {
                 slot.hide()
             }

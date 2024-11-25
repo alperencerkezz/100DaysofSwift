@@ -42,6 +42,18 @@ class WhackSlot: SKNode {
         isVisible = true
         isHit = false
         
+        if let mudEffect = SKEmitterNode(fileNamed: "Mud") {
+            mudEffect.position = CGPoint(x: 0, y: -90)
+            mudEffect.zPosition = 1
+            addChild(mudEffect)
+            
+            mudEffect.run(SKAction.sequence([
+                SKAction.wait(forDuration: 0.5),
+                SKAction.removeFromParent()
+            ]))
+        }
+        
+        
         if Int.random(in: 0...2) == 0 {
             charNode.texture = SKTexture(imageNamed: "penguinGood")
             charNode.name = "charFriend"
@@ -58,6 +70,18 @@ class WhackSlot: SKNode {
     
     func hide() {
         if !isVisible { return }
+        
+        if let mudEffect = SKEmitterNode(fileNamed: "Mud") {
+            mudEffect.position = CGPoint(x: 0, y: -90)
+            mudEffect.zPosition = 1
+            addChild(mudEffect)
+            
+            mudEffect.run(SKAction.sequence([
+                SKAction.wait(forDuration: 0.5),
+                SKAction.removeFromParent()
+            ]))
+        }
+        
         
         charNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.05))
         isVisible = false
