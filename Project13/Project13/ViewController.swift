@@ -44,6 +44,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         applyProcessing()
+        
+        imageView.alpha = 0
+        imageView.image = currentImage
+        UIView.animate(withDuration: 1.0) {
+        self.imageView.alpha = 1
+        }
     }
     
     @IBAction func changeFilter(_ sender: UIButton) {
