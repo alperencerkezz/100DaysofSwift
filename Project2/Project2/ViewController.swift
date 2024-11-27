@@ -47,6 +47,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.15, animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+        }) { _ in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: [], animations: {
+                        sender.transform = .identity
+        })
+    }
+        
         count += 1
         if count < 10 {
             if sender.tag == correctAnswer {
@@ -61,7 +69,7 @@ class ViewController: UIViewController {
                 present(ac, animated: true)
             }
         } else {
-            // Game Over logic
+            
             if sender.tag != correctAnswer {
                 score -= 1
                 let fac = UIAlertController(title: "Game Over", message: "Wrong! Your score is \(score), That's the flag of \(countries[sender.tag].uppercased())", preferredStyle: .alert)
