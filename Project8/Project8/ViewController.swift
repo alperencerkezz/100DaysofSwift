@@ -29,14 +29,12 @@ class ViewController: UIViewController {
         view = UIView()
         view.backgroundColor = .white
         
-        // Set up the score label
         scoreLabel = UILabel()
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         scoreLabel.textAlignment = .right
         scoreLabel.text = "Score: 0"
         view.addSubview(scoreLabel)
         
-        // Set up the clues label
         cluesLabel = UILabel()
         cluesLabel.translatesAutoresizingMaskIntoConstraints = false
         cluesLabel.font = UIFont.systemFont(ofSize: 24)
@@ -45,7 +43,6 @@ class ViewController: UIViewController {
         cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         view.addSubview(cluesLabel)
         
-        // Set up the answers label
         answersLabel = UILabel()
         answersLabel.translatesAutoresizingMaskIntoConstraints = false
         answersLabel.font = UIFont.systemFont(ofSize: 24)
@@ -55,7 +52,6 @@ class ViewController: UIViewController {
         answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         view.addSubview(answersLabel)
         
-        // Set up the current answer text field
         currentAnswer = UITextField()
         currentAnswer.translatesAutoresizingMaskIntoConstraints = false
         currentAnswer.placeholder = "Tap letters to guess"
@@ -64,7 +60,7 @@ class ViewController: UIViewController {
         currentAnswer.isUserInteractionEnabled = false
         view.addSubview(currentAnswer)
         
-        // Set up submit and clear buttons
+        
         let submit = UIButton(type: .system)
         submit.translatesAutoresizingMaskIntoConstraints = false
         submit.setTitle("SUBMIT", for: .normal)
@@ -143,7 +139,9 @@ class ViewController: UIViewController {
         guard let buttonTitle = sender.titleLabel?.text else { return }
         currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
         activatedButtons.append(sender)
-        sender.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            sender.alpha = 0
+        }
     }
     
     @objc func submitTapped(_ sender: UIButton) {
@@ -152,7 +150,9 @@ class ViewController: UIViewController {
     @objc func clearTapped(_ sender: UIButton) {
         currentAnswer.text = ""
         for button in activatedButtons {
-            button.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                button.alpha = 1
+            }
         }
         activatedButtons.removeAll()
     }
