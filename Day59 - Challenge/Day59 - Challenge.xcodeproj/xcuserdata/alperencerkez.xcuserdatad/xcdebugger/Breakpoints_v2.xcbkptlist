@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "10E35CD1-226F-43F8-93B7-9B9DA97DFC6C"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7594CAB3-D5FC-4B3E-8C36-2B6B768D0252"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Day59 - Challenge/DetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "DetailViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "7594CAB3-D5FC-4B3E-8C36-2B6B768D0252 - dd7962e538ea67a4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Day59___Challenge.DetailViewController.capitalLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Day59 - Challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alperencerkez/Desktop/100DaysofSwift/Day59%20-%20Challenge/Day59%20-%20Challenge/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "7594CAB3-D5FC-4B3E-8C36-2B6B768D0252 - 17c26e3ec400bbb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Day59___Challenge.DetailViewController.capitalLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Day59 - Challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alperencerkez/Desktop/100DaysofSwift/Day59%20-%20Challenge/Day59%20-%20Challenge/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "7594CAB3-D5FC-4B3E-8C36-2B6B768D0252 - 3daf9b18a7acba4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Day59___Challenge.DetailViewController.capitalLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Day59 - Challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alperencerkez/Desktop/100DaysofSwift/Day59%20-%20Challenge/Day59%20-%20Challenge/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "7594CAB3-D5FC-4B3E-8C36-2B6B768D0252 - 87751e2abae31b94"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Day59___Challenge.DetailViewController.capitalLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Day59 - Challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alperencerkez/Desktop/100DaysofSwift/Day59%20-%20Challenge/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "7594CAB3-D5FC-4B3E-8C36-2B6B768D0252 - add0bf686b310b5d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Day59___Challenge.DetailViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Day59___Challenge.DetailViewController"
+                  moduleName = "Day59 - Challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alperencerkez/Desktop/100DaysofSwift/Day59%20-%20Challenge/Day59%20-%20Challenge/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "7594CAB3-D5FC-4B3E-8C36-2B6B768D0252 - a2c8ff1ad9e40ad9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Day59___Challenge.DetailViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Day59___Challenge.DetailViewController&gt;"
+                  moduleName = "Day59 - Challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alperencerkez/Desktop/100DaysofSwift/Day59%20-%20Challenge/Day59%20-%20Challenge/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

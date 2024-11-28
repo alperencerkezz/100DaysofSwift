@@ -1,0 +1,223 @@
+[
+    {
+        "name": {
+            "common": "Türkiye"
+        },
+        "capital": ["Ankara"],
+        "population": 84339067,
+        "currencies": {
+            "TRY": {
+                "name": "Turkish Lira"
+            }
+        },
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "flags": {
+            "png": "https://flagcdn.com/w320/tr.png"
+        }
+    },
+    {
+        "name": {
+            "common": "United States"
+        },
+        "capital": ["Washington, D.C."],
+        "population": 331893745,
+        "currencies": {
+            "USD": {
+                "name": "United States Dollar"
+            }
+        },
+        "region": "Americas",
+        "subregion": "Northern America",
+        "flags": {
+            "png": "https://flagcdn.com/w320/us.png"
+        }
+    },
+    {
+        "name": {
+            "common": "Netherlands"
+        },
+        "capital": ["Amsterdam"],
+        "population": 17441139,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/nl.png"
+        }
+    },
+    {
+        "name": {
+            "common": "Poland"
+        },
+        "capital": ["Warsaw"],
+        "population": 38386000,
+        "currencies": {
+            "PLN": {
+                "name": "Polish Złoty"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Central Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/pl.png"
+        }
+    },
+    {
+        "name": {
+            "common": "Belgium"
+        },
+        "capital": ["Brussels"],
+        "population": 11589623,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/be.png"
+        }
+    },
+    {
+        "name": {
+            "common": "Germany"
+        },
+        "capital": ["Berlin"],
+        "population": 83155031,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/de.png"
+        }
+    },
+    {
+        "name": {
+            "common": "France"
+        },
+        "capital": ["Paris"],
+        "population": 67391582,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/fr.png"
+        }
+    },
+    {
+        "name": {
+            "common": "Italy"
+        },
+        "capital": ["Rome"],
+        "population": 60262770,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/it.png"
+        }
+    },
+    {
+        "name": {
+            "common": "Vatican City"
+        },
+        "capital": ["Vatican City"],
+        "population": 800,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/va.png"
+        }
+    },
+    {
+        "name": {
+            "common": "San Marino"
+        },
+        "capital": ["City of San Marino"],
+        "population": 33931,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/sm.png"
+        }
+    },
+    {
+        "name": {
+            "common": "Spain"
+        },
+        "capital": ["Madrid"],
+        "population": 47431256,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/es.png"
+        }
+    },
+    {
+        "name": {
+            "common": "Portugal"
+        },
+        "capital": ["Lisbon"],
+        "population": 10305564,
+        "currencies": {
+            "EUR": {
+                "name": "Euro"
+            }
+        },
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "flags": {
+            "png": "https://flagcdn.com/w320/pt.png"
+        }
+    },
+ {
+         "name": {
+             "common": "Greece"
+         },
+         "capital": ["Athens"],
+         "population": 10423054,
+         "currencies": {
+             "EUR": {
+                 "name": "Euro"
+             }
+         },
+         "region": "Europe",
+         "subregion": "Southern Europe",
+         "flags": {
+             "png": "https://flagcdn.com/w320/gr.png"
+         }
+     }
+ ]
