@@ -18,10 +18,36 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let paris = Capital(title: "Paris", coordinate: CLLocationCoordinate2D(latitude: 48.8567, longitude: 2.3508), info: "Often called the city of light")
         
         mapView.addAnnotations([istanbul, oslo, paris])
-        
-        
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map Type", style: .plain, target: self, action: #selector(changeMapType))
     }
+    
+    @objc func changeMapType() {
+        let ac = UIAlertController(title: "Choose Map Type", message: nil, preferredStyle: .actionSheet)
+        
+        // Add map type options
+        ac.addAction(UIAlertAction(title: "Standard", style: .default) { [weak self] _ in
+            self?.mapView.mapType = .standard
+        })
+        ac.addAction(UIAlertAction(title: "Satellite", style: .default) { [weak self] _ in
+            self?.mapView.mapType = .satellite
+        })
+        ac.addAction(UIAlertAction(title: "Hybrid", style: .default) { [weak self] _ in
+            self?.mapView.mapType = .hybrid
+        })
+        ac.addAction(UIAlertAction(title: "Satellite Flyover", style: .default) { [weak self] _ in
+            self?.mapView.mapType = .satelliteFlyover
+        })
+        ac.addAction(UIAlertAction(title: "Muted Standard", style: .default) { [weak self] _ in
+            self?.mapView.mapType = .mutedStandard
+        })
+        
+        // Add cancel option
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        // Present the alert controller
+        present(ac, animated: true)
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is Capital else { return nil }
         
@@ -33,7 +59,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
             annotationView?.markerTintColor = .systemBlue
-            annotationView?.glyphText = "🏙️" 
+            annotationView?.glyphText = "🏙️"
             
             let btn = UIButton(type: .detailDisclosure)
             annotationView?.rightCalloutAccessoryView = btn
