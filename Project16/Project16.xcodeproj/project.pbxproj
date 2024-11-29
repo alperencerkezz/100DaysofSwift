@@ -14,6 +14,7 @@
 		880AEF3D2CF8C8FE00886E0A /* Project16.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 880AEF3B2CF8C8FE00886E0A /* Project16.xcdatamodeld */; };
 		880AEF3F2CF8C8FF00886E0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880AEF3E2CF8C8FF00886E0A /* Assets.xcassets */; };
 		880AEF422CF8C8FF00886E0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880AEF402CF8C8FF00886E0A /* LaunchScreen.storyboard */; };
+		886ECBEA2CF9D84100411D74 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886ECBE92CF9D84100411D74 /* WebViewController.swift */; };
 		88A7A31C2CF9B65A00902487 /* Capital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A7A31B2CF9B65A00902487 /* Capital.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		880AEF3E2CF8C8FF00886E0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		880AEF412CF8C8FF00886E0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		880AEF432CF8C8FF00886E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		886ECBE92CF9D84100411D74 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		88A7A31B2CF9B65A00902487 /* Capital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capital.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 				880AEF322CF8C8FE00886E0A /* AppDelegate.swift */,
 				880AEF342CF8C8FE00886E0A /* SceneDelegate.swift */,
 				880AEF362CF8C8FE00886E0A /* ViewController.swift */,
+				886ECBE92CF9D84100411D74 /* WebViewController.swift */,
 				88A7A31B2CF9B65A00902487 /* Capital.swift */,
 				880AEF382CF8C8FE00886E0A /* Main.storyboard */,
 				880AEF3E2CF8C8FF00886E0A /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				880AEF3D2CF8C8FE00886E0A /* Project16.xcdatamodeld in Sources */,
+				886ECBEA2CF9D84100411D74 /* WebViewController.swift in Sources */,
 				880AEF372CF8C8FE00886E0A /* ViewController.swift in Sources */,
 				880AEF332CF8C8FE00886E0A /* AppDelegate.swift in Sources */,
 				880AEF352CF8C8FE00886E0A /* SceneDelegate.swift in Sources */,

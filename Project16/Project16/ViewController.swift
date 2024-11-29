@@ -72,13 +72,20 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let capital = view.annotation as? Capital else { return }
         
-        let placeName = capital.title
+        let placeName = capital.title?.replacingOccurrences(of: " ", with: "_") ?? ""
+        let urlString = "https://en.wikipedia.org/wiki/\(placeName)"
         let placeInfo = capital.info
         
-        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        if let url = URL(string: urlString) {
+            let webVC = WebViewController()
+            webVC.cityURL = url
+            navigationController?.pushViewController(webVC, animated: true)
+            
+            let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+        
     }
-
+    
 }
-
