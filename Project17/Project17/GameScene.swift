@@ -56,6 +56,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        }
     
     @objc func createEnemy(){
+        guard !isGameOver else { return }
+        
         guard let enemy = possibleEnemies.randomElement() else { return }
         
         let sprite = SKSpriteNode(imageNamed: enemy)
