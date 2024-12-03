@@ -120,7 +120,7 @@ class ViewController: UITableViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
-    
+        
     func submit(answer: String) {
         let lowerAnswer = answer.lowercased()
         
