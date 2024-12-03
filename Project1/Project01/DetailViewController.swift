@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        assert(selectedImage != nil, "selectedImage must have a value before viewDidLoad is called.")
         self.title = "Picture \(selectedPictureNumber!) of \(totalPictures!)"
         navigationItem.largeTitleDisplayMode = .never
         
