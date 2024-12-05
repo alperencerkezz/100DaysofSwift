@@ -165,6 +165,10 @@ class GameScene: SKScene {
         if let emitter = SKEmitterNode(fileNamed: "explode") {
             emitter.position = firework.position
             addChild(emitter)
+            
+            let wait = SKAction.wait(forDuration: 2)
+            let remove = SKAction.removeFromParent()
+            emitter.run(SKAction.sequence([wait, remove]))
         }
         firework.removeFromParent()
     }
@@ -205,4 +209,5 @@ class GameScene: SKScene {
         gameOverLabel.position = CGPoint(x: 512, y: 384)
         addChild(gameOverLabel)
     }
+    
 }
