@@ -27,7 +27,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
                 print("D'oh!")
             }
         }
-        
     }
     
     @objc func scheduleLocal() {
@@ -43,12 +42,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = .default
         
-        var dateComponents = DateComponents()
-        dateComponents.hour = 10
-        dateComponents.minute = 30
-       // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)
     }
@@ -58,41 +52,75 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         center.delegate = self
         
         let show = UNNotificationAction(identifier: "show", title: "Tell me more...", options: .foreground)
-        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [], options: [])
+        let remindMeLater = UNNotificationAction(identifier: "remindMeLater", title: "Remind me later", options: [])
         
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show, remindMeLater], intentIdentifiers: [], options: [])
         center.setNotificationCategories([category])
     }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-
+        
         if let customData = userInfo["customData"] as? String {
             print("Custom data received: \(customData)")
-
-            var title: String
-            var message: String
+            
+            let alert = UIAlertController(title: "Notification Received", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
 
             switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
-                title = "Default Action"
-                message = "You interacted with the notification in the default way."
-
+                print("Default identifier")
+                alert.message = "You opened the notification."
+                
             case "show":
-                title = "Show More Information"
-                message = "Here's more information about the custom data: \(customData)"
-
+                print("Show more information...")
+                alert.message = "You chose to see more information."
+                
+            case "remindMeLater":
+                print("Remind me later...")
+                scheduleReminder()
+                alert.message = "Reminder set for 24 hours later."
+                
             default:
-                title = "Unknown Action"
-                message = "An unknown action was triggered."
+                alert.message = "Unknown action taken."
             }
-
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            
             DispatchQueue.main.async {
                 self.present(alert, animated: true)
             }
         }
-
+        
         completionHandler()
     }
-}
+    
+    func scheduleReminder() {
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Reminder"
+        content.body = "This is your reminder to check back later."
+        content.categoryIdentifier = "alarm"
+        content.sound = .default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: false) // 24 hours in seconds.
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
+    }
+    
+    func scheduleWeeklyReminders() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests() // Clears old reminders.
 
+        for day in 1...7 {
+            let content = UNMutableNotificationContent()
+            content.title = "Daily Reminder"
+            content.body = "Come back and play!"
+            content.categoryIdentifier = "reminder"
+            content.sound = .default
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(day * 86400), repeats: false) // Days in seconds.
+            let request = UNNotificationRequest(identifier: "reminder-\(day)", content: content, trigger: trigger)
+            center.add(request)
+        }
+    }
+}
