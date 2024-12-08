@@ -11,7 +11,7 @@ class ViewController: UITableViewController {
     var pictures = [String]()
     var selectedPictureNumber = 0
     var totalPictures = 0
-    var viewCounts = [String: Int]() // Dictionary to store the view counts for each image
+    var viewCounts = [String: Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +20,12 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(recommendApp))
         
-        // Load view counts from UserDefaults
+        
         if let savedCounts = UserDefaults.standard.dictionary(forKey: "viewCounts") as? [String: Int] {
             viewCounts = savedCounts
         }
         
-        // Load images asynchronously
+        
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             let fm = FileManager.default
             let path = Bundle.main.resourcePath!
@@ -62,11 +62,11 @@ class ViewController: UITableViewController {
         
         cell.textLabel?.text = imageName
         
-        // Display the view count as a subtitle
+        
         let viewCount = viewCounts[imageName] ?? 0
         cell.detailTextLabel?.text = "Viewed \(viewCount) times"
         
-        // Set image with fixed size
+        
         let image = UIImage(named: imageName)
         cell.imageView?.image = image
         cell.imageView?.contentMode = .scaleAspectFit
@@ -78,16 +78,16 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedImage = pictures[indexPath.row]
         
-        // Increment the view count
+        
         viewCounts[selectedImage, default: 0] += 1
         
-        // Save updated counts to UserDefaults
+        
         UserDefaults.standard.set(viewCounts, forKey: "viewCounts")
         
-        // Reload the selected cell to show updated count
+        
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
-        // Push to detail view controller
+        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Bad") as? DetailViewController {
             vc.selectedImage = selectedImage
             vc.selectedPictureNumber = indexPath.row + 1

@@ -24,6 +24,7 @@
 		88BDD5672C8D7BE600EEB1FA /* nssl0033.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88BDD55D2C8D7BE600EEB1FA /* nssl0033.jpg */; };
 		88BDD5682C8D7BE600EEB1FA /* nssl0034.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88BDD55E2C8D7BE600EEB1FA /* nssl0034.jpg */; };
 		88BDD56A2C8E09AC00EEB1FA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDD5692C8E09AC00EEB1FA /* DetailViewController.swift */; };
+		88E4EEED2D05B8770009A920 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4EEEC2D05B8770009A920 /* NotesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		88BDD55D2C8D7BE600EEB1FA /* nssl0033.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0033.jpg; sourceTree = "<group>"; };
 		88BDD55E2C8D7BE600EEB1FA /* nssl0034.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0034.jpg; sourceTree = "<group>"; };
 		88BDD5692C8E09AC00EEB1FA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		88E4EEEC2D05B8770009A920 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				88BDD5442C8D7ACD00EEB1FA /* ViewController.swift */,
 				88BDD5692C8E09AC00EEB1FA /* DetailViewController.swift */,
 				88BDD5462C8D7ACD00EEB1FA /* Main.storyboard */,
+				88E4EEEC2D05B8770009A920 /* NotesTableViewController.swift */,
 				88BDD5492C8D7ACE00EEB1FA /* Assets.xcassets */,
 				88BDD54B2C8D7ACE00EEB1FA /* LaunchScreen.storyboard */,
 				88BDD54E2C8D7ACE00EEB1FA /* Info.plist */,
@@ -193,6 +196,7 @@
 				88BDD5412C8D7ACD00EEB1FA /* AppDelegate.swift in Sources */,
 				88BDD5432C8D7ACD00EEB1FA /* SceneDelegate.swift in Sources */,
 				88BDD56A2C8E09AC00EEB1FA /* DetailViewController.swift in Sources */,
+				88E4EEED2D05B8770009A920 /* NotesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
