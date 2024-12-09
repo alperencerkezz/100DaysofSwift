@@ -88,7 +88,7 @@ class ViewController: UITableViewController {
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
         
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "Bad") as? DetailViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.selectedImage = selectedImage
             vc.selectedPictureNumber = indexPath.row + 1
             vc.totalPictures = pictures.count
