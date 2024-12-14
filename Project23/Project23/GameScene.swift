@@ -44,6 +44,16 @@ class GameScene: SKScene {
     
     var isGameEnded = false
     
+    let enemyMinXPosition: CGFloat = 64
+    let enemyMaxXPosition: CGFloat = 960
+    let enemyMinYPosition: CGFloat = -128
+    let enemyMaxYVelocity: Int = 24
+    let enemyMinYVelocity: Int = 8
+    let enemyAngularVelocityRange: CGFloat = 3
+
+    let bonusEnemySpeedMultiplier: CGFloat = 2.0
+    let bonusEnemyPoints: Int = 10
+    
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "sliceBackground")
@@ -244,8 +254,8 @@ class GameScene: SKScene {
     func createEnemy(forceBomb: ForceBomb = .random) {
         let enemy: SKSpriteNode
         
+        // Determine whether to create a bomb or a normal enemy
         var enemyType = Int.random(in: 0...6)
-        
         if forceBomb == .never {
             enemyType = 1
         } else if forceBomb == .always {
@@ -253,58 +263,46 @@ class GameScene: SKScene {
         }
         
         if enemyType == 0 {
-            enemy = SKSpriteNode()
-            enemy.zPosition = 1
-            enemy.name = "bombContainer"
+            // Bomb setup
+            enemy = SKSpriteNode(imageNamed: "sliceBomb")
+            enemy.name = "bomb"
             
-            let bombImage = SKSpriteNode(imageNamed: "sliceBomb")
-            bombImage.name = "bomb"
-            enemy.addChild(bombImage)
+            let bombFuse = SKSpriteNode(imageNamed: "sliceFuse")
+            bombFuse.position = CGPoint(x: 76, y: 64)
+            enemy.addChild(bombFuse)
             
-            if bombSoundEffect != nil {
-                bombSoundEffect?.stop()
-                bombSoundEffect = nil
+            if let bombSoundEffect = bombSoundEffect {
+                bombSoundEffect.stop()
             }
             
-            if let path = Bundle.main.url(forResource: "sliceBombFuse", withExtension: "caf") {
-                if let sound = try? AVAudioPlayer(contentsOf: path) {
-                    bombSoundEffect = sound
-                    sound.play()
-                }
-            }
-            
-            if let emitter = SKEmitterNode(fileNamed: "sliceFuse") {
-                emitter.position = CGPoint(x: 76, y: 64)
-                enemy.addChild(emitter)
-            }
+            let path = Bundle.main.path(forResource: "sliceBombFuse", ofType: "caf")!
+            let url = URL(fileURLWithPath: path)
+            bombSoundEffect = try? AVAudioPlayer(contentsOf: url)
+            bombSoundEffect?.play()
+        } else if enemyType == 6 {
+            // Bonus enemy setup
+            enemy = SKSpriteNode(imageNamed: "bonusEnemy")
+            enemy.name = "bonus"
         } else {
+            // Normal enemy setup
             enemy = SKSpriteNode(imageNamed: "penguin")
-            run(SKAction.playSoundFileNamed("launch.caf", waitForCompletion: false))
             enemy.name = "enemy"
         }
         
-        let randomPosition = CGPoint(x: Int.random(in: 64...960), y: -128)
-        enemy.position = randomPosition
+        // Position and physics setup
+        let randomXPosition = Int.random(in: Int(enemyMinXPosition)...Int(enemyMaxXPosition))
+        let randomYVelocity = Int.random(in: enemyMinYVelocity...enemyMaxYVelocity)
+        let randomAngularVelocity = CGFloat.random(in: -enemyAngularVelocityRange...enemyAngularVelocityRange)
         
-        let randomAngularVelocity = CGFloat.random(in: -3...3)
-        let randomXVelocity: Int
-        
-        if randomPosition.x < 256 {
-            randomXVelocity = Int.random(in: 8...15)
-        } else if randomPosition.x < 512 {
-            randomXVelocity = Int.random(in: 3...5)
-        } else if randomPosition.x < 768 {
-            randomXVelocity = -Int.random(in: 3...5)
-        } else {
-            randomXVelocity = -Int.random(in: 8...15)
-        }
-        
-        let randomYVelocity = Int.random(in: 24...32)
-        
+        enemy.position = CGPoint(x: randomXPosition, y: Int(enemyMinYPosition))
         enemy.physicsBody = SKPhysicsBody(circleOfRadius: 64)
-        enemy.physicsBody?.velocity = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
+        enemy.physicsBody?.velocity = CGVector(dx: 0, dy: randomYVelocity * 40)
         enemy.physicsBody?.angularVelocity = randomAngularVelocity
         enemy.physicsBody?.collisionBitMask = 0
+        
+        if enemy.name == "bonus" {
+            enemy.physicsBody?.velocity.dy *= Int(bonusEnemySpeedMultiplier)
+        }
         
         addChild(enemy)
         activeEnemies.append(enemy)
