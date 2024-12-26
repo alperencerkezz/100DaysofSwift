@@ -74,7 +74,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    // Handles each node creation based on the letter
     func createNode(for letter: Character, at position: CGPoint) {
         switch letter {
         case "x":
@@ -94,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    // Creates a wall node
+    
     func createWall(at position: CGPoint) {
         let node = SKSpriteNode(imageNamed: "block")
         node.position = position
@@ -104,7 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(node)
     }
 
-    // Creates a vortex node
+    
     func createVortex(at position: CGPoint) {
         let node = SKSpriteNode(imageNamed: "vortex")
         node.name = "vortex"
@@ -118,7 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(node)
     }
 
-    // Creates a star node
+    
     func createStar(at position: CGPoint) {
         let node = SKSpriteNode(imageNamed: "star")
         node.name = "star"
@@ -131,7 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(node)
     }
 
-    // Creates a finish point node
+    
     func createFinish(at position: CGPoint) {
         let node = SKSpriteNode(imageNamed: "finish")
         node.name = "finish"
@@ -144,7 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(node)
     }
 
-    // Creates a teleport node
+    
     func createTeleport(at position: CGPoint) {
         let node = SKSpriteNode(imageNamed: "teleport")
         node.name = "teleport"
