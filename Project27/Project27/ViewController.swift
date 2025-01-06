@@ -5,7 +5,7 @@
 //  Created by Alperen Çerkez on 5.01.2025.
 //
 
-import UIKit
+import UIKit 
 
 class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBAction func redrawTapped(_ sender: Any) {
         currentDrawType += 1
         
-        if currentDrawType > 5 {
+        if currentDrawType > 6 {
             currentDrawType = 0
         }
         
@@ -36,6 +36,8 @@ class ViewController: UIViewController {
             drawLines()
         case 5:
             drawImagesAndText()
+        case 6:
+            drawStar()
         default:
             break
         }
@@ -167,6 +169,91 @@ class ViewController: UIViewController {
             
             let mouse = UIImage(named: "mouse")
             mouse?.draw(at: CGPoint(x: 300, y: 150))
+        }
+        
+        imageView.image = image
+    }
+    
+    func drawStar() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let image = renderer.image { ctx in
+            let center = CGPoint(x: 256, y: 256)
+            let pointsOnStar = 5
+            let starExtrusion: CGFloat = 100
+            
+            let angle = (2.0 * .pi) / CGFloat(pointsOnStar)
+            let halfAngle = angle / 2.0
+            
+            let path = UIBezierPath()
+            
+            for i in 0..<pointsOnStar {
+                let angle = CGFloat(i) * angle - .pi / 2
+                let point = CGPoint(
+                    x: center.x + cos(angle) * starExtrusion,
+                    y: center.y + sin(angle) * starExtrusion
+                )
+                
+                if i == 0 {
+                    path.move(to: point)
+                } else {
+                    path.addLine(to: point)
+                }
+                
+                let midAngle = angle + halfAngle
+                let midPoint = CGPoint(
+                    x: center.x + cos(midAngle) * (starExtrusion / 2),
+                    y: center.y + sin(midAngle) * (starExtrusion / 2)
+                )
+                
+                path.addLine(to: midPoint)
+            }
+            
+            path.close()
+            
+            ctx.cgContext.setFillColor(UIColor.yellow.cgColor)
+            ctx.cgContext.setStrokeColor(UIColor.orange.cgColor)
+            ctx.cgContext.setLineWidth(5)
+            
+            ctx.cgContext.addPath(path.cgPath)
+            ctx.cgContext.drawPath(using: .fillStroke)
+        }
+        
+        imageView.image = image
+    }
+    
+    func drawTWIN() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let image = renderer.image { ctx in
+            let context = ctx.cgContext
+            context.setStrokeColor(UIColor.black.cgColor)
+            context.setLineWidth(5)
+            
+            // Draw 'T'
+            context.move(to: CGPoint(x: 50, y: 100))
+            context.addLine(to: CGPoint(x: 150, y: 100))
+            context.move(to: CGPoint(x: 100, y: 100))
+            context.addLine(to: CGPoint(x: 100, y: 200))
+            
+            // Draw 'W'
+            context.move(to: CGPoint(x: 200, y: 100))
+            context.addLine(to: CGPoint(x: 225, y: 200))
+            context.addLine(to: CGPoint(x: 250, y: 150))
+            context.addLine(to: CGPoint(x: 275, y: 200))
+            context.addLine(to: CGPoint(x: 300, y: 100))
+            
+            // Draw 'I'
+            context.move(to: CGPoint(x: 350, y: 100))
+            context.addLine(to: CGPoint(x: 350, y: 200))
+            
+            // Draw 'N'
+            context.move(to: CGPoint(x: 400, y: 200))
+            context.addLine(to: CGPoint(x: 400, y: 100))
+            context.addLine(to: CGPoint(x: 450, y: 200))
+            context.addLine(to: CGPoint(x: 450, y: 100))
+            
+            context.strokePath()
         }
         
         imageView.image = image
