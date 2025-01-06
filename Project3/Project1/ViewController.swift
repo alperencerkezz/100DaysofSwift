@@ -20,7 +20,7 @@ class ViewController: UITableViewController {
         
         let fm = FileManager.default
         
-        // accept the forced unwrapping and try danger - if this does not work this app has no point in existing
+
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
 
