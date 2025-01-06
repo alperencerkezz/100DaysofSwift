@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         guard let selectedImage = selectedImage else {
             print("No image provided")
             return
@@ -44,18 +44,54 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
     }
-
+    
     @objc func shareTapped() {
-        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+        guard let image = imageView.image else {
             print("No image found")
             return
         }
-        var shareable: [Any] = [image]
-        if let imageText = selectedImage {
-            shareable.append(imageText)
-        }
-        let vc = UIActivityViewController(activityItems: shareable, applicationActivities: [])
+        
+        // Render the image with the text overlay
+        let renderedImage = renderImageWithText(image: image, text: "From Storm Viewer")
+        
+        // Share the final rendered image
+        let vc = UIActivityViewController(activityItems: [renderedImage], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
     }
+    
+    func renderImageWithText(image: UIImage, text: String) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: image.size)
+        
+        let renderedImage = renderer.image { ctx in
+            // Draw the original image
+            image.draw(in: CGRect(origin: .zero, size: image.size))
+            
+            // Define text attributes
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: image.size.width * 0.05, weight: .bold),
+                .foregroundColor: UIColor.white,
+                .paragraphStyle: paragraphStyle,
+                .backgroundColor: UIColor.black.withAlphaComponent(0.6)
+            ]
+            
+            let textHeight = image.size.height * 0.1
+            let textRect = CGRect(
+                x: 0,
+                y: image.size.height - textHeight,
+                width: image.size.width,
+                height: textHeight
+            )
+            
+            // Draw the text in the specified rectangle
+            let attributedString = NSAttributedString(string: text, attributes: attributes)
+            attributedString.draw(in: textRect)
+        }
+        
+        return renderedImage
+    }
+    
 }
