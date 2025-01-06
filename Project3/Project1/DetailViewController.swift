@@ -51,10 +51,8 @@ class DetailViewController: UIViewController {
             return
         }
         
-        // Render the image with the text overlay
         let renderedImage = renderImageWithText(image: image, text: "From Storm Viewer")
         
-        // Share the final rendered image
         let vc = UIActivityViewController(activityItems: [renderedImage], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
@@ -64,10 +62,9 @@ class DetailViewController: UIViewController {
         let renderer = UIGraphicsImageRenderer(size: image.size)
         
         let renderedImage = renderer.image { ctx in
-            // Draw the original image
+    
             image.draw(in: CGRect(origin: .zero, size: image.size))
             
-            // Define text attributes
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             
@@ -86,7 +83,6 @@ class DetailViewController: UIViewController {
                 height: textHeight
             )
             
-            // Draw the text in the specified rectangle
             let attributedString = NSAttributedString(string: text, attributes: attributes)
             attributedString.draw(in: textRect)
         }
