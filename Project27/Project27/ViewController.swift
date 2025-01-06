@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBAction func redrawTapped(_ sender: Any) {
         currentDrawType += 1
         
-        if currentDrawType > 6 {
+        if currentDrawType > 7 {
             currentDrawType = 0
         }
         
@@ -38,6 +38,8 @@ class ViewController: UIViewController {
             drawImagesAndText()
         case 6:
             drawStar()
+        case 7:
+            drawTWIN()
         default:
             break
         }
